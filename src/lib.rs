@@ -1,28 +1,8 @@
-struct Stack<T> {
-  stack: Vec<T>,
-}
+mod queue;
+mod stack;
 
-impl<T> Stack<T> {
-  fn new() -> Stack<T> {
-    Stack { stack: Vec::new() }
-  }
-
-  fn length(&self) -> usize {
-    self.stack.len()
-  }
-
-  fn pop(&mut self) -> Option<T> {
-    self.stack.pop()
-  }
-
-  fn push(&mut self, item: T) {
-    self.stack.push(item)
-  }
-
-  fn peek(&self) -> Option<&T> {
-    self.stack.get(self.length() - 1)
-  }
-}
+use queue::*;
+use stack::*;
 
 #[cfg(test)]
 mod tests {
@@ -35,9 +15,34 @@ mod tests {
   }
 
   #[test]
-  #[should_panic]
-  fn stack_panic() {
+  fn stack_pop() {
     let mut stack: Stack<isize> = Stack::new();
-    let last_element = stack.peek().unwrap();
+    stack.push(1);
+    let item = stack.pop();
+    assert_eq!(item.unwrap(), 1);
+    assert_eq!(stack.is_empty(), true);
+  }
+
+  #[test]
+  #[should_panic]
+  fn stack_empty_peek_panic() {
+    let stack: Stack<isize> = Stack::new();
+    stack.peek().unwrap();
+  }
+
+  #[test]
+  fn queue_peek() {
+    let mut queue: Queue<isize> = Queue::new();
+    queue.enqueue(1);
+    assert_eq!(*queue.peek().unwrap(), 1);
+  }
+
+  #[test]
+  fn queue_dequeue() {
+    let mut queue: Queue<isize> = Queue::new();
+    queue.enqueue(1);
+    let item = queue.dequeue();
+    assert_eq!(item, 1);
+    assert_eq!(queue.is_empty(), true);
   }
 }
