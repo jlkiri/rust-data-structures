@@ -12,11 +12,11 @@ pub struct List<T> {
 }
 
 impl<T> List<T> {
-  fn new() -> Self {
+  pub fn new() -> Self {
     List { head: None }
   }
 
-  fn push(&mut self, item: T) {
+  pub fn push(&mut self, item: T) {
     let next_node = Box::new(Node {
       value: item,
       next: self.head.take(),
@@ -25,14 +25,14 @@ impl<T> List<T> {
     self.head = Some(next_node)
   }
 
-  fn pop(&mut self) -> Option<T> {
+  pub fn pop(&mut self) -> Option<T> {
     self.head.take().map(|node| {
       self.head = node.next;
       node.value
     })
   }
 
-  fn peek(&self) -> Option<&T> {
+  pub fn peek(&self) -> Option<&T> {
     self.head.as_ref().map(|node| &node.value)
   }
 }

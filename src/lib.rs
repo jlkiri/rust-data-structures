@@ -47,4 +47,21 @@ mod tests {
     assert_eq!(item, 1);
     assert_eq!(queue.is_empty(), true);
   }
+
+  #[test]
+  fn linked_push() {
+    let mut list: List<isize> = List::new();
+    list.push(1);
+    list.push(2);
+    assert_eq!(list.pop(), Some(2));
+    assert_eq!(list.pop(), Some(1));
+  }
+
+  #[test]
+  fn linked_peek() {
+    let mut list: List<isize> = List::new();
+    list.push(1);
+    list.push(2);
+    assert_eq!(list.peek(), Some(&2));
+  }
 }
