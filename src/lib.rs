@@ -1,6 +1,8 @@
+mod linked_list;
 mod queue;
 mod stack;
 
+use linked_list::*;
 use queue::*;
 use stack::*;
 

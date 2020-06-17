@@ -3,7 +3,7 @@ pub struct Stack<T> {
 }
 
 impl<T> Stack<T> {
-  pub fn new() -> Stack<T> {
+  pub fn new() -> Self {
     Stack { stack: Vec::new() }
   }
 
