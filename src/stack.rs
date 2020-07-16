@@ -24,6 +24,6 @@ impl<T> Stack<T> {
   }
 
   pub fn peek(&self) -> Option<&T> {
-    self.stack.get(self.length() - 1)
+    self.stack.last()
   }
 }

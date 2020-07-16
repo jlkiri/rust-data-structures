@@ -23,6 +23,6 @@ impl<T> Queue<T> {
   }
 
   pub fn peek(&self) -> Option<&T> {
-    self.queue.get(0)
+    self.queue.first()
   }
 }
