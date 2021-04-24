@@ -1,10 +1,12 @@
 mod linked_list;
 mod queue;
 mod stack;
+mod graph;
 
 use linked_list::*;
 use queue::*;
 use stack::*;
+use graph::*;
 
 #[cfg(test)]
 mod tests {
